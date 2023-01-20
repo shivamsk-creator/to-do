@@ -1,0 +1,87 @@
+body {
+  background-color: #0e1525 !important;
+  color: #fff !important;
+}
+
+.App {
+  text-align: center;
+}
+
+.taskBg {
+  background-color: #1c2333;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  padding: 11px 140px 10px 15px;
+  text-align: left;
+  font-size: 22px;
+  position: relative;
+}
+
+.btn-default {
+  background-color: #0053a6;
+}
+
+.btn-default:hover {
+  background-color: #0079f2;
+}
+
+.btn-cancel {
+  color: white;
+  background-color: #d96d00;
+}
+
+.btn-cancel:hover {
+  background-color: #fc9024;
+}
+
+.taskBg div {
+  display: flex;
+  align-items: center;
+}
+
+.taskNumber {
+  color: #0079f2;
+  border: 1px solid #0079f2;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  text-align: center;
+  font-size: 14px;
+  margin-left: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.taskBg .taskText {
+  flex: 1;
+}
+
+.taskBg .done .taskText {
+  text-decoration: line-through;
+  opacity: 0.3;
+}
+
+.taskBg .iconsWrap {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15px;
+  width: auto;
+  display: inline-block;
+}
+
+.taskBg .iconsWrap span {
+  display: inline-block;
+  margin: 0px 10px 0 10px;
+  cursor: pointer;
+  color: #0079f2;
+}
+
+.taskBg .iconsWrap span:hover {
+  color: #d96d00;
+}
+
+.mr-20 {
+  margin-right: 20px;
+}
