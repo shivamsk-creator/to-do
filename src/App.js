@@ -1,10 +1,6 @@
 import { useContext, useState } from "react";
-// import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import AddTaskForm from "./components/AddTaskForm";
-import UpdateForm from "./components/UpdateForm";
-import ToDo from "./components/ToDo";
 import Header from "./components/Header";
 import { Route, Routes } from "react-router-dom";
 import Tasks from "./pages/Tasks";
@@ -24,12 +20,12 @@ function App() {
 
       <Routes>
         <Route
-          path="/to-do"
+          path="/"
           exact={true}
           element={authState?.isLogin ? <UserTasks /> : <Tasks />}
         />
-        <Route path="/to-do/login" exact={true} element={<Login />} />
-        <Route path="/to-do/register" exact={true} element={<Register />} />
+        <Route path="/login" exact={true} element={<Login />} />
+        <Route path="/register" exact={true} element={<Register />} />
       </Routes>
 
       {/* Toastify */}

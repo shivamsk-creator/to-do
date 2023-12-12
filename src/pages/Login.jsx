@@ -32,7 +32,7 @@ const Login = () => {
         })(authDispatch);
         emptyFields();
         toast.success("Successfully LoggedIn");
-        navigate("/to-do");
+        navigate("/");
       }
     } catch (err) {
       if (err.status === 401)
@@ -134,10 +134,7 @@ const Login = () => {
           </button>
           <div>
             Don't have an account ??{" "}
-            <Link
-              to="/to-do/register"
-              className="hover-text-light hover-underline"
-            >
+            <Link to="/register" className="hover-text-light hover-underline">
               Sign Up
             </Link>
           </div>

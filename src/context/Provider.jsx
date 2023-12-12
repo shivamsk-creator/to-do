@@ -17,7 +17,7 @@ function GlobalProvider(props) {
 
   const [authState, authDispatch] = useReducer(auth, {}, () => {
     const localAuthState = localStorage.getItem("userState");
-    // console.log("localAuthState =>", localAuthState);
+    console.log("localAuthState =>", localAuthState);
     // if (localAuthState)
     setTemp(localAuthState ? JSON.parse(localAuthState) : localAuthState);
     TodoApi.setToken(temp?.access_token);
@@ -32,7 +32,7 @@ function GlobalProvider(props) {
 
   const logOutNow = () => {
     logoutSuccess({})(authDispatch);
-    navigate("/to-do", { replace: true });
+    navigate("/", { replace: true });
   };
 
   useEffect(scrollToTop, [location.pathname]);

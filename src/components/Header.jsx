@@ -10,7 +10,7 @@ const Header = () => {
     <div className="d-flex justify-content-end">
       {!authState?.isLogin && (
         <button
-          onClick={() => navigate("/to-do/login")}
+          onClick={() => navigate("/login")}
           type="button"
           className="btn btn-outline-light h-fit"
         >
