@@ -43,7 +43,7 @@ const Register = () => {
       if (apiRes?._id) {
         toast.success("Registered Successfully");
         emptyFields();
-        navigate("/login");
+        navigate("/to-do/login");
       }
     } catch (err) {
       if (err.status === 401)
@@ -139,7 +139,7 @@ const Register = () => {
           >
             Sign Up
           </button>
-          <Link to="/login">Back to login</Link>
+          <Link to="/to-do/login">Back to login</Link>
         </form>
       </div>
     </>

@@ -3,7 +3,6 @@ const SuperagentPromise = require("superagent-promise");
 const superagent = SuperagentPromise(_superagent, global.Promise);
 
 const API_ROOT = process.env.REACT_APP_API_URL || "http://localhost:8000/";
-console.log("API_ROOT=>", process.env.REACT_APP_API_URL);
 
 const responseBody = (res) => res.body;
 
@@ -15,7 +14,7 @@ const tokenPlugin = (req) => {
   }
 };
 
-console.log("token is ", token);
+// console.log("token is ", token);
 
 const requests = {
   del: (url) =>
