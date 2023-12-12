@@ -1,12 +1,22 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 // import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import AddTaskForm from "./components/AddTaskForm";
 import UpdateForm from "./components/UpdateForm";
 import ToDo from "./components/ToDo";
+import Header from "./components/Header";
+import { Route, Routes } from "react-router-dom";
+import Tasks from "./pages/Tasks";
+import UserTasks from "./pages/UserTasks";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { GlobalContext } from "./context/Provider";
 
 function App() {
+  const { authState } = useContext(GlobalContext);
   // To do list state
   const [toDo, setToDo] = useState([
     { id: 1, title: "Meeting with Client", status: false },
@@ -61,32 +71,31 @@ function App() {
 
   return (
     <div className="container App py-5">
-      <h1 className="pt-3 pb-5">To do List</h1>
+      <Header />
 
-      {updateData && updateData ? (
-        <UpdateForm
-          updateData={updateData}
-          updateTask={updateTask}
-          changeHolder={changeHolder}
-          cancelUpdate={cancelUpdate}
+      <Routes>
+        <Route
+          path="/"
+          exact={true}
+          element={authState?.isLogin ? <UserTasks /> : <Tasks />}
         />
-      ) : (
-        <AddTaskForm
-          newTask={newTask}
-          setNewTask={setNewTask}
-          addTask={addTask}
-        />
-      )}
+        <Route path="/login" exact={true} element={<Login />} />
+        <Route path="/register" exact={true} element={<Register />} />
+      </Routes>
 
-      {/* Display ToDos */}
+      {/* Toastify */}
 
-      {toDo && toDo.length ? "" : "No Tasks....."}
-
-      <ToDo
-        toDo={toDo}
-        markDone={markDone}
-        setUpdateData={setUpdateData}
-        deleteTask={deleteTask}
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
       />
     </div>
   );

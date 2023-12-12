@@ -79,9 +79,31 @@ body {
 }
 
 .taskBg .iconsWrap span:hover {
-  color: #d96d00;
+  color: #e2a11d;
 }
 
 .mr-20 {
   margin-right: 20px;
+}
+
+.input-field:focus {
+  color: white !important;
+}
+
+.avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 2px solid white;
+  font-size: 30px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.dropdown-toggle::after {
+  margin-left: 10px !important;
+  color: white;
 }

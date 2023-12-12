@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 import TodoApi from "../utils/TodoApi";
 import { useEffect, useState } from "react";
 
-const UpdateForm = ({ updateBox, getTaskList, handleUpdateBox }) => {
+const UpdateUserTask = ({ updateBox, getTaskList, handleUpdateBox }) => {
   const [updatedTask, setUpdatedTask] = useState("");
   const [updateStatus, setUpdateStatus] = useState("");
 
@@ -15,7 +15,7 @@ const UpdateForm = ({ updateBox, getTaskList, handleUpdateBox }) => {
     const data = { name: updatedTask, done: updateStatus };
 
     try {
-      const apiRes = await TodoApi.Tasks.update(updateBox._id, data);
+      const apiRes = await TodoApi.UserTasks.update(updateBox._id, data);
 
       if (apiRes?.updatedItem?._id) {
         toast.success("Updated Successfully");
@@ -62,4 +62,4 @@ const UpdateForm = ({ updateBox, getTaskList, handleUpdateBox }) => {
   );
 };
 
-export default UpdateForm;
+export default UpdateUserTask;
