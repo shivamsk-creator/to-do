@@ -43,6 +43,10 @@ function GlobalProvider(props) {
   }, [authState]);
 
   useEffect(() => {
+    TodoApi.setToken(temp?.access_token);
+  }, []);
+
+  useEffect(() => {
     if (!localStorage.getItem("userState")) {
       logOutNow();
     }
