@@ -87,7 +87,7 @@ body {
 }
 
 .input-field:focus {
-  color: white !important;
+  /* color: white !important; */
 }
 
 .avatar {

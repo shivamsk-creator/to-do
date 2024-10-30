@@ -9,6 +9,7 @@ import {
   faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 import UpdateForm from "../components/UpdateForm";
+import moment from "moment";
 
 const Tasks = () => {
   const [newTask, setNewTask] = useState("");
@@ -168,6 +169,9 @@ const Tasks = () => {
                     </span>
                   </div>
                   <div className="iconsWrap">
+                    {/* <span className="text-white fs-6">
+                      {moment(task.updatedAt).format("DD MMM YYYY HH:MM ")}
+                    </span> */}
                     <span
                       className="Completed / Not Completed"
                       onClick={(e) => markTaskDone(task)}

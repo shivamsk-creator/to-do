@@ -76,28 +76,30 @@ const Login = () => {
         <form className="col-lg-4 mt-5 mx-auto">
           <h2 class="fw-bold mb-5">Sign in</h2>
           {/* Email input */}
-          <div className="form-outline mb-4">
+          <div className="form-floating mb-4 text-primary">
             <input
               type="email"
               id="form2Example1"
               className="form-control input-field"
               autoComplete="off"
               onChange={(e) => setEmail(e.target.value)}
+              placeholder="abc@example.com"
             />
-            <label className="form-label text-white" htmlFor="form2Example1">
+            <label className="form-label" htmlFor="form2Example1">
               Email address
             </label>
           </div>
           {/* Password input */}
-          <div className="form-outline mb-4">
+          <div className="form-floating mb-4">
             <input
               type="password"
               id="form2Example2"
               className="form-control input-field"
               autoComplete="off"
               onChange={(e) => setPassword(e.target.value)}
+              placeholder=""
             />
-            <label className="form-label  text-white" htmlFor="form2Example2">
+            <label className="form-label" htmlFor="form2Example2">
               Password
             </label>
           </div>
