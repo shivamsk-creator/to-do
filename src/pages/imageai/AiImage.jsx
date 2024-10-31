@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { HashLoader } from "react-spinners";
 import Loader from "../../common/Loader";
+import { toast } from "react-toastify";
 
 const AiImage = () => {
   const [prompt, setPrompt] = useState("");
@@ -55,21 +56,26 @@ const AiImage = () => {
       ],
     };
 
-    const response = await fetch(path, {
-      headers,
-      method: "POST",
-      body: JSON.stringify(body),
-    });
+    try {
+      const response = await fetch(path, {
+        headers,
+        method: "POST",
+        body: JSON.stringify(body),
+      });
 
-    console.log("response1=>", response);
+      console.log("response1=>", response);
 
-    if (!response.ok) {
-      throw new Error(`Non-200 response: ${await response.text()}`);
+      const responseJSON = await response.json();
+
+      if (!response.ok) {
+        throw responseJSON;
+      }
+
+      return responseJSON;
+    } catch (error) {
+      console.log("error=>", error);
+      throw error;
     }
-
-    const responseJSON = await response.json();
-
-    return responseJSON;
   };
 
   const generateImage = async () => {
@@ -87,9 +93,16 @@ const AiImage = () => {
       const response = await generateImageFromStability();
       console.log("response", response);
       // setImage(response?.images[0]);
-      setStabilityImages(response?.artifacts);
+      if (Array.isArray(response?.artifacts)) {
+        setStabilityImages(response?.artifacts);
+      }
     } catch (error) {
       console.log(error);
+      if (error?.message) {
+        {
+          toast.error(error?.message);
+        }
+      }
     } finally {
       setLoading(false);
     }
