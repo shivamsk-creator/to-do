@@ -1,3 +1,11 @@
+:root {
+  --default-bg-color: #0e1525;
+  --primary-color: #0053a6;
+  --primary-color-hover: #0079f2;
+  --secondary-color: #d96d00;
+  --secondary-color-hover: #fc9024;
+}
+
 body {
   background-color: #0e1525 !important;
   color: #fff !important;
