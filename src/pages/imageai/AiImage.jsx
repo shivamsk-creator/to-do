@@ -92,7 +92,15 @@ const AiImage = () => {
   };
 
   return (
-    <section style={{ background: "white", color: "black", padding: "10px" }}>
+    <section
+      style={{
+        background: "white",
+        color: "black",
+        padding: "10px",
+        marginTop: "10px",
+      }}
+    >
+      <h2 className="my-5">What type of Image you want ?</h2>
       <input
         type="text"
         className="form-control m-1"
