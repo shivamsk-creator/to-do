@@ -128,12 +128,13 @@ const AiImage = () => {
       }}
     >
       <h2 className="my-5">What type of Image you want ?</h2>
-      <input
+      <textarea
         type="text"
         className="form-control"
         onChange={(e) => setPrompt(e.target.value)}
         placeholder="Bollywood actor SRK in a suit with a smile"
-        style={{ width: "50%", margin: "auto" }}
+        style={{ width: "80%", margin: "auto" }}
+        rows="3"
       />
       <button
         className="btn btn-primary mt-4"
