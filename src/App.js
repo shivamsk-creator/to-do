@@ -11,6 +11,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { GlobalContext } from "./context/Provider";
 import AiImage from "./pages/imageai/AiImage";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   const { authState } = useContext(GlobalContext);
@@ -28,6 +29,7 @@ function App() {
         <Route path="/login" exact={true} element={<Login />} />
         <Route path="/register" exact={true} element={<Register />} />
         <Route path="/ai" exact={true} element={<AiImage />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
 
       {/* Toastify */}
