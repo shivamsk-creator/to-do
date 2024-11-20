@@ -52,12 +52,13 @@ const Tasks = {
 };
 
 const UserTasks = {
-  list: () => requests.get(`usertasks`),
-  get: (id) => requests.get(`usertasks/${id}`),
-  getByUser: (id) => requests.get(`usertasks/user/${id}`),
-  update: (id, body) => requests.put(`usertasks/${id}`, body),
-  create: (item) => requests.post(`usertasks/`, item),
-  delete: (id) => requests.del(`usertasks/${id}`),
+  list: () => requests.get(`user-tasks`),
+  get: (id) => requests.get(`user-tasks/${id}`),
+  getMytasks: () => requests.get(`user-tasks`),
+  getByUser: (id) => requests.get(`user-tasks/user/${id}`),
+  update: (id, body) => requests.put(`user-tasks/${id}`, body),
+  create: (item) => requests.post(`user-tasks/`, item),
+  delete: (id) => requests.del(`user-tasks/${id}`),
 };
 
 const TodoApi = {

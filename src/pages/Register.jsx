@@ -40,15 +40,18 @@ const Register = () => {
       setLoading(true);
       const apiRes = await TodoApi.Users.create(data);
       console.log("apiRes=>", apiRes);
-      if (apiRes?._id) {
+      if (apiRes?.access_token) {
         toast.success("Registered Successfully");
         emptyFields();
         navigate("/login");
       }
     } catch (err) {
       if (err.status === 401)
-        toast.error(`${err.response.body.message}, Please login again`);
-      if (err.status === 400) toast.error(`${err.response.body.message}`);
+        toast.error(
+          `${err.response.body.error_description}, Please login again`
+        );
+      if (err.status === 400)
+        toast.error(`${err.response.body.error_description}`);
     } finally {
       setLoading(false);
     }

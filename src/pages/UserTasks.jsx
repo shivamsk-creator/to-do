@@ -24,13 +24,14 @@ const UserTasks = () => {
   const getTaskList = async () => {
     try {
       // setLoading(true);
-      const apires = await TodoApi.UserTasks.getByUser(authState._id);
+      const apires = await TodoApi.UserTasks.getMytasks();
       setTaskList(apires);
       console.log("api response is=> ", apires);
     } catch (err) {
       // if (err.status === 401)
-      //   toast.error(`${err.response.body.message}, Please login again`);
-      if (err.status === 400) toast.error(`${err.response.body.message}`);
+      //   toast.error(`${err.response.body.error_description}, Please login again`);
+      if (err.status === 400)
+        toast.error(`${err.response.body.error_description}`);
     } finally {
       // setLoading(false);
     }
@@ -48,8 +49,11 @@ const UserTasks = () => {
       }
     } catch (err) {
       if (err.status === 401)
-        toast.error(`${err.response.body.message}, Please login again`);
-      if (err.status === 400) toast.error(`${err.response.body.message}`);
+        toast.error(
+          `${err.response.body.error_description}, Please login again`
+        );
+      if (err.status === 400)
+        toast.error(`${err.response.body.error_description}`);
     } finally {
     }
   };
@@ -64,8 +68,11 @@ const UserTasks = () => {
       }
     } catch (err) {
       if (err.status === 401)
-        toast.error(`${err.response.body.message}, Please login again`);
-      if (err.status === 400) toast.error(`${err.response.body.message}`);
+        toast.error(
+          `${err.response.body.error_description}, Please login again`
+        );
+      if (err.status === 400)
+        toast.error(`${err.response.body.error_description}`);
     } finally {
     }
   };
@@ -84,8 +91,11 @@ const UserTasks = () => {
       }
     } catch (err) {
       if (err.status === 401)
-        toast.error(`${err.response.body.message}, Please login again`);
-      if (err.status === 400) toast.error(`${err.response.body.message}`);
+        toast.error(
+          `${err.response.body.error_description}, Please login again`
+        );
+      if (err.status === 400)
+        toast.error(`${err.response.body.error_description}`);
     } finally {
     }
   };

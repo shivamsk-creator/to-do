@@ -24,7 +24,7 @@ const Login = () => {
       const apiRes = await TodoApi.Users.login(data);
       console.log("apiRes=>", apiRes);
       if (apiRes.access_token) {
-        const payload = apiRes.payload;
+        const payload = apiRes.data;
         LoginSuccess({
           access_token: apiRes.access_token,
           ...payload,
@@ -35,9 +35,14 @@ const Login = () => {
         navigate("/");
       }
     } catch (err) {
+      console.log("err=>", err.response.body.error_description);
+
       if (err.status === 401)
-        toast.error(`${err.response.body.message}, Please login again`);
-      if (err.status === 400) toast.error(`${err.response.body.message}`);
+        toast.error(
+          `${err?.response?.body?.error_description}, Please login again`
+        );
+      if (err.status === 400)
+        toast.error(`${err?.response.body?.error_description}`);
     } finally {
       setLoading(false);
     }

@@ -24,8 +24,11 @@ const UpdateUserTask = ({ updateBox, getTaskList, handleUpdateBox }) => {
       }
     } catch (err) {
       if (err.status === 401)
-        toast.error(`${err.response.body.message}, Please login again`);
-      if (err.status === 400) toast.error(`${err.response.body.message}`);
+        toast.error(
+          `${err.response.body.error_description}, Please login again`
+        );
+      if (err.status === 400)
+        toast.error(`${err.response.body.error_description}`);
     } finally {
     }
   };
