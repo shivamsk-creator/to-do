@@ -58,7 +58,7 @@ const UserTasks = () => {
     try {
       const apiRes = await TodoApi.UserTasks.delete(id);
       console.log("apiRes=>", apiRes);
-      if (apiRes?.acknowledged) {
+      if (apiRes?._id) {
         toast.success("Deleted Successfully");
         getTaskList();
       }

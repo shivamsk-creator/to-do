@@ -24,7 +24,7 @@ const requests = {
     superagent.get(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody),
   put: (url, body) =>
     superagent
-      .put(`${API_ROOT}${url}`, body)
+      .patch(`${API_ROOT}${url}`, body)
       .use(tokenPlugin)
       .then(responseBody),
   post: (url, body) =>
@@ -38,8 +38,8 @@ const Users = {
   list: () => requests.get(`users`),
   get: (id) => requests.get(`users/${id}`),
   update: (id, body) => requests.put(`users/${id}`, body),
-  create: (item) => requests.post(`users/register`, item),
-  login: (item) => requests.post(`users/login`, item),
+  create: (item) => requests.post(`register`, item),
+  login: (item) => requests.post(`login`, item),
   delete: (id) => requests.del(`users/${id}`),
 };
 
