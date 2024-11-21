@@ -24,7 +24,7 @@ const requests = {
     superagent.get(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody),
   put: (url, body) =>
     superagent
-      .patch(`${API_ROOT}${url}`, body)
+      .put(`${API_ROOT}${url}`, body)
       .use(tokenPlugin)
       .then(responseBody),
   post: (url, body) =>

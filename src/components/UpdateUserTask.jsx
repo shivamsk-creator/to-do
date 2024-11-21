@@ -17,13 +17,13 @@ const UpdateUserTask = ({ updateBox, getTaskList, handleUpdateBox }) => {
     try {
       const apiRes = await TodoApi.UserTasks.update(updateBox._id, data);
 
-      if (apiRes?.updatedItem?._id) {
+      if (apiRes?.updatedTask?._id) {
         toast.success("Updated Successfully");
         getTaskList();
         handleUpdateBox();
       }
     } catch (err) {
-      if (err.status === 401)
+      if (err.status === 403)
         toast.error(
           `${err.response.body.error_description}, Please login again`
         );

@@ -37,7 +37,7 @@ const Login = () => {
     } catch (err) {
       console.log("err=>", err.response.body.error_description);
 
-      if (err.status === 401)
+      if (err.status === 403)
         toast.error(
           `${err?.response?.body?.error_description}, Please login again`
         );

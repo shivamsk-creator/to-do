@@ -28,7 +28,7 @@ const UserTasks = () => {
       setTaskList(apires);
       console.log("api response is=> ", apires);
     } catch (err) {
-      // if (err.status === 401)
+      // if (err.status === 403)
       //   toast.error(`${err.response.body.error_description}, Please login again`);
       if (err.status === 400)
         toast.error(`${err.response.body.error_description}`);
@@ -48,7 +48,9 @@ const UserTasks = () => {
         getTaskList();
       }
     } catch (err) {
-      if (err.status === 401)
+      console.log("err=>", err.response.body.error_description);
+
+      if (err.status === 403)
         toast.error(
           `${err.response.body.error_description}, Please login again`
         );
@@ -67,7 +69,7 @@ const UserTasks = () => {
         getTaskList();
       }
     } catch (err) {
-      if (err.status === 401)
+      if (err.status === 403)
         toast.error(
           `${err.response.body.error_description}, Please login again`
         );
@@ -86,11 +88,11 @@ const UserTasks = () => {
     try {
       const apiRes = await TodoApi.UserTasks.update(task._id, data);
       console.log("apiRes=>", apiRes);
-      if (apiRes?.updatedItem?._id) {
+      if (apiRes?.updatedTask?._id) {
         getTaskList();
       }
     } catch (err) {
-      if (err.status === 401)
+      if (err.status === 403)
         toast.error(
           `${err.response.body.error_description}, Please login again`
         );

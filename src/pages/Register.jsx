@@ -46,7 +46,7 @@ const Register = () => {
         navigate("/login");
       }
     } catch (err) {
-      if (err.status === 401)
+      if (err.status === 403)
         toast.error(
           `${err.response.body.error_description}, Please login again`
         );
