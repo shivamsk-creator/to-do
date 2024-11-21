@@ -10,12 +10,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import UpdateForm from "../components/UpdateForm";
 import UpdateUserTask from "../components/UpdateUserTask";
+import Loader from "../common/Loader";
 
 const UserTasks = () => {
   const [newTask, setNewTask] = useState("");
   const [updateBox, setUpdateBox] = useState("");
   const [taskList, setTaskList] = useState([]);
   const { authState } = useContext(GlobalContext);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getTaskList();
@@ -38,8 +40,10 @@ const UserTasks = () => {
   };
 
   const addTask = async () => {
+    if (!newTask) return toast.error("Task name is required");
     const data = { name: newTask, user: authState._id };
     try {
+      setLoading(true);
       const apiRes = await TodoApi.UserTasks.create(data);
       console.log("apiRes=>", apiRes);
       if (apiRes?._id) {
@@ -57,6 +61,7 @@ const UserTasks = () => {
       if (err.status === 400)
         toast.error(`${err.response.body.error_description}`);
     } finally {
+      setLoading(false);
     }
   };
 
@@ -119,6 +124,12 @@ const UserTasks = () => {
               onChange={(e) => {
                 setNewTask(e.target.value);
               }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  addTask();
+                }
+              }}
+              placeholder="Meeting with client"
             />
           </div>
 
@@ -127,7 +138,7 @@ const UserTasks = () => {
               onClick={addTask}
               className="btn btn-lg text-light btn-primary"
             >
-              Add Task
+              {loading ? <Loader loading={loading} /> : "Add Task"}
             </button>
           </div>
         </div>

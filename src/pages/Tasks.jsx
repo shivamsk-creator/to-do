@@ -10,12 +10,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import UpdateForm from "../components/UpdateForm";
 import moment from "moment";
+import Loader from "../common/Loader";
 
 const Tasks = () => {
   const [newTask, setNewTask] = useState("");
 
   const [updateBox, setUpdateBox] = useState("");
   const [taskList, setTaskList] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getTaskList();
@@ -42,6 +44,7 @@ const Tasks = () => {
   const addTask = async () => {
     const data = { name: newTask };
     try {
+      setLoading(true);
       const apiRes = await TodoApi.Tasks.create(data);
       console.log("apiRes=>", apiRes);
       if (apiRes?._id) {
@@ -57,6 +60,7 @@ const Tasks = () => {
       if (err.status === 400)
         toast.error(`${err.response.body.error_description}`);
     } finally {
+      setLoading(false);
     }
   };
 
@@ -121,6 +125,7 @@ const Tasks = () => {
                   addTask();
                 }
               }}
+              placeholder="Visit the doctor at 5pm"
             />
           </div>
 
@@ -129,7 +134,7 @@ const Tasks = () => {
               onClick={addTask}
               className="btn btn-lg text-light btn-primary"
             >
-              Add Task
+              {loading ? <Loader loading={loading} /> : "Add Task"}
             </button>
           </div>
         </div>

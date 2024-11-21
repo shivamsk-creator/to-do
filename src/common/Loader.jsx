@@ -1,13 +1,13 @@
 import React from "react";
-import { HashLoader } from "react-spinners";
+import { PropagateLoader, SyncLoader } from "react-spinners";
 
 const Loader = ({ loading }) => {
   return (
     <>
       {loading && (
-        <div className="d-flex justify-content-center my-5">
-          <HashLoader color="#0053a6" />
-        </div>
+        // <div className="d-flex justify-content-center my-5">
+        <SyncLoader color="#ffffff" size={10} speedMultiplier={0.7} />
+        // </div>
       )}
     </>
   );

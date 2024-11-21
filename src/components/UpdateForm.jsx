@@ -12,6 +12,7 @@ const UpdateForm = ({ updateBox, getTaskList, handleUpdateBox }) => {
   }, [updateBox]);
 
   const updateTask = async () => {
+    if (!updatedTask) return toast.error("Task name is required");
     const data = { name: updatedTask, done: updateStatus };
 
     try {
@@ -43,6 +44,12 @@ const UpdateForm = ({ updateBox, getTaskList, handleUpdateBox }) => {
             className="form-control form-control-lg"
             value={updatedTask}
             onChange={(e) => setUpdatedTask(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                updateTask(updateBox);
+              }
+            }}
+            placeholder="Update Task"
           />
         </div>
 
