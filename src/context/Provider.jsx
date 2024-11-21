@@ -32,6 +32,7 @@ function GlobalProvider(props) {
 
   const logOutNow = () => {
     logoutSuccess({})(authDispatch);
+    localStorage.removeItem("token");
     navigate("/", { replace: true });
   };
 

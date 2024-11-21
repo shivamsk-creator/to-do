@@ -50,7 +50,7 @@ const UserTasks = () => {
     } catch (err) {
       console.log("err=>", err.response.body.error_description);
 
-      if (err.status === 403)
+      if (err.status === 401)
         toast.error(
           `${err.response.body.error_description}, Please login again`
         );
@@ -69,7 +69,7 @@ const UserTasks = () => {
         getTaskList();
       }
     } catch (err) {
-      if (err.status === 403)
+      if (err.status === 401)
         toast.error(
           `${err.response.body.error_description}, Please login again`
         );
@@ -92,7 +92,7 @@ const UserTasks = () => {
         getTaskList();
       }
     } catch (err) {
-      if (err.status === 403)
+      if (err.status === 401)
         toast.error(
           `${err.response.body.error_description}, Please login again`
         );

@@ -9,6 +9,7 @@ const responseBody = (res) => res.body;
 
 let token = "";
 const tokenPlugin = (req) => {
+  token = localStorage.getItem("token") || "";
   if (token) {
     console.log("finalToken =>", token);
     req.set("Authorization", `Bearer ${token}`);

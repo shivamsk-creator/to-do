@@ -23,7 +23,7 @@ const UpdateUserTask = ({ updateBox, getTaskList, handleUpdateBox }) => {
         handleUpdateBox();
       }
     } catch (err) {
-      if (err.status === 403)
+      if (err.status === 401)
         toast.error(
           `${err.response.body.error_description}, Please login again`
         );

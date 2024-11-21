@@ -30,6 +30,8 @@ const Login = () => {
           ...payload,
           role: "user",
         })(authDispatch);
+        TodoApi.setToken(apiRes?.access_token);
+        localStorage.setItem("token", apiRes?.access_token);
         emptyFields();
         toast.success("Successfully LoggedIn");
         navigate("/");

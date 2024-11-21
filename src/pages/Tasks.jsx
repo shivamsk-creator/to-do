@@ -28,7 +28,7 @@ const Tasks = () => {
       setTaskList(apires);
       console.log("api response is=> ", apires);
     } catch (err) {
-      if (err.status === 403)
+      if (err.status === 401)
         toast.error(
           `${err.response.body.error_description}, Please login again`
         );
@@ -50,7 +50,7 @@ const Tasks = () => {
         getTaskList();
       }
     } catch (err) {
-      if (err.status === 403)
+      if (err.status === 401)
         toast.error(
           `${err.response.body.error_description}, Please login again`
         );
@@ -69,7 +69,7 @@ const Tasks = () => {
         getTaskList();
       }
     } catch (err) {
-      if (err.status === 403)
+      if (err.status === 401)
         toast.error(
           `${err.response.body.error_description}, Please login again`
         );
@@ -92,7 +92,7 @@ const Tasks = () => {
         getTaskList();
       }
     } catch (err) {
-      if (err.status === 403)
+      if (err.status === 401)
         toast.error(
           `${err.response.body.error_description}, Please login again`
         );
@@ -115,6 +115,11 @@ const Tasks = () => {
               value={newTask}
               onChange={(e) => {
                 setNewTask(e.target.value);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  addTask();
+                }
               }}
             />
           </div>
