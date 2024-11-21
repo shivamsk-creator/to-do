@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import TodoApi from "../utils/TodoApi";
 import LoginSuccess from "../context/actions/auth/LoginSuccess";
 import { GlobalContext } from "../context/Provider";
+import Loader from "../common/Loader";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -106,41 +107,24 @@ const Login = () => {
               autoComplete="off"
               onChange={(e) => setPassword(e.target.value)}
               placeholder=""
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  submitForm(e);
+                }
+              }}
             />
             <label className="form-label" htmlFor="form2Example2">
               Password
             </label>
           </div>
-          {/* 2 column grid layout for inline styling */}
-          {/* <div className="row mb-4">
-          <div className="col d-flex justify-content-center"> */}
-          {/* Checkbox */}
-          {/* <div className="form-check">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                defaultValue=""
-                id="form2Example31"
-                defaultChecked=""
-              />
-              <label className="form-check-label" htmlFor="form2Example31">
-                {" "}
-                Remember me{" "}
-              </label>
-            </div>
-          </div>
-          <div className="col"> */}
-          {/* Simple link */}
-          {/* <a href="#!">Forgot password?</a>
-          </div>
-        </div> */}
+
           {/* Submit button */}
           <button
             onClick={(e) => submitForm(e)}
             type="button"
             className="btn btn-primary btn-block mb-4"
           >
-            Sign in
+            {loading ? <Loader loading={loading} /> : "Sign in"}
           </button>
           <div>
             Don't have an account ??{" "}

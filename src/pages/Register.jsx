@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import TodoApi from "../utils/TodoApi";
 import { GlobalContext } from "../context/Provider";
+import Loader from "../common/Loader";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -132,6 +133,11 @@ const Register = () => {
               onChange={(e) => setCPassword(e.target.value)}
               autoComplete="off"
               placeholder=""
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  submitForm(e);
+                }
+              }}
             />
             <label className="form-label" htmlFor="form2Example2">
               Confirm Password
@@ -143,8 +149,9 @@ const Register = () => {
             onClick={(e) => submitForm(e)}
             type="button"
             className="btn btn-primary btn-block mb-4"
+            disabled={loading}
           >
-            Sign Up
+            {loading ? <Loader loading={loading} /> : "Sign up"}
           </button>
           <Link to="/login">Back to login</Link>
         </form>
